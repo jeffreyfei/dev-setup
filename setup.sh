@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function vim {
-    echo "Initializing vim...\n"
+    echo "Initializing vim..."
     echo "Setting up pathogen..."
     # Get pathogen
     mkdir -p ~/.vim/autoload ~/.vim/bundle
@@ -20,14 +20,23 @@ function vim {
 }
 
 
-while getopts ":av" opt; do
+while getopts ":avh" opt; do
     case $opt in
         a)
-            echo "Full initialization in progress...\n"
+            echo "Full initialization in progress..."
             vim
             ;;
         v)
             vim
+            ;;
+        h)
+            echo "-------Setup dev enviroment---------"
+            echo ""
+            echo "-a Apply all setup"
+            echo "-v Apply vim only"
+            echo ""
+            echo "By: Jeffrey Fei"
+            echo "------------------------------------"
             ;;
         \?)
             echo "Invalid option: -$OPTARG"

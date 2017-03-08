@@ -29,8 +29,8 @@ set number
 nmap <silent> <BS> :nohlsearch<CR>
 
 " redefine tabs
-filetype plugin indent on
-"set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+" filetype plugin indent on
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 " remove trailing spaces
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 

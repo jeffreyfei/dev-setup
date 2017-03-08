@@ -21,12 +21,25 @@ if executable(local_eslint)
 "----------------------------
 endif
 syntax on
+set ruler
+set showmatch
+set showmode
 set autoindent
+set ignorecase
 set smartcase
+set number
+
+" Search improvements
 set incsearch
 set hlsearch
-set number
 nmap <silent> <BS> :nohlsearch<CR>
+
+" Always show the status line
+set laststatus=2
+
+" Treat long lines as break lines
+map j gj
+map k gk
 
 " redefine tabs
 " filetype plugin indent on

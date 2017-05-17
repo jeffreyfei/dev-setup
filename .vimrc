@@ -50,5 +50,5 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap pc "+p
 nnoremap ppc "+P
 
-nnoremap H gt
-nnoremap L gT
+nnoremap H gT
+nnoremap L gt

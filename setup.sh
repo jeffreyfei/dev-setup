@@ -19,6 +19,8 @@ function vim {
     git clone https://github.com/isRuslan/vim-es6.git
     # Get pug highlighting
     git clone git://github.com/digitaltoad/vim-pug.git
+    # Get sass highlighting
+    git clone https://github.com/hail2u/vim-css3-syntax.git
 }
 
 

@@ -23,21 +23,35 @@ function vim {
     git clone https://github.com/hail2u/vim-css3-syntax.git
 }
 
+function profile {
+    echo "Updating bash profile..."
+    cp ./.bashrc ~/
+    echo "Done"
+    echo "Updating ssh profile..."
+    cp ./config ~/.ssh
+    echo "Done"
+}
 
-while getopts ":avh" opt; do
+
+while getopts ":avhp" opt; do
     case $opt in
         a)
             echo "Full initialization in progress..."
             vim
+            profile
             ;;
         v)
             vim
+            ;;
+        p)
+            profile
             ;;
         h)
             echo "-------Setup dev enviroment---------"
             echo ""
             echo "-a Apply all setup"
             echo "-v Apply vim only"
+            echo "-p Apply profile only"
             echo ""
             echo "By: Jeffrey Fei"
             echo "------------------------------------"

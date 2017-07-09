@@ -27,6 +27,7 @@ set showmode
 set autoindent
 set ignorecase
 set smartcase
+set relativenumber
 set number
 
 " Search improvements

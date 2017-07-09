@@ -29,6 +29,7 @@ set ignorecase
 set smartcase
 set relativenumber
 set number
+set colorcolumn=80
 
 " Search improvements
 set incsearch

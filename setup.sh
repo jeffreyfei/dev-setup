@@ -3,6 +3,9 @@
 function vim {
     echo "Initializing vim..."
     echo "Setting up pathogen..."
+    # Set syntax highlighting
+    mkdir -p ~/.vim/after/syntax
+    cp -r syntax/* ~/.vim/after/syntax
     # Get pathogen
     mkdir -p ~/.vim/autoload ~/.vim/bundle
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim

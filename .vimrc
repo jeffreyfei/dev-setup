@@ -31,6 +31,12 @@ set relativenumber
 set number
 set colorcolumn=80
 
+" Automcomplete
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
 " Search improvements
 set incsearch
 set hlsearch

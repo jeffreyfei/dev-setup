@@ -21,6 +21,7 @@ if executable(local_eslint)
 "----------------------------
 endif
 syntax on
+colorscheme jellybeans
 set ruler
 set showmatch
 set showmode

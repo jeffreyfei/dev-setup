@@ -8,6 +8,10 @@ function vim {
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     # Copy over vimrc
     cp ./.vimrc ~/
+    # Copy over color scheme
+    mkdir -p ~/.vim/colors
+    cp -r ./colors/* ~/.vim/colors
+
     cd ~/.vim/bundle
     # Get syntastic
     git clone --depth=1 https://github.com/vim-syntastic/syntastic.git

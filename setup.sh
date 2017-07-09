@@ -32,6 +32,10 @@ function profile {
     echo "Done"
 }
 
+function git {
+   git config --global credential.helper 'cache --timeout=28800' 
+}
+
 
 while getopts ":avhp" opt; do
     case $opt in
@@ -39,6 +43,7 @@ while getopts ":avhp" opt; do
             echo "Full initialization in progress..."
             vim
             profile
+            git
             ;;
         v)
             vim

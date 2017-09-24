@@ -28,7 +28,13 @@ let g:syntastic_enable_highlighting = 1
 "----------------------------
 "endif
 syntax on
-colorscheme jellybeans
+
+syntax enable
+set background=dark
+colorscheme solarized
+
+" colorscheme jellybeans
+
 set ruler
 set showmatch
 set showmode
@@ -37,7 +43,7 @@ set ignorecase
 set smartcase
 set relativenumber
 set number
-highlight ColorColumn ctermbg=8
+highlight ColorColumn ctermbg=7
 set colorcolumn=80
 
 " Automcomplete

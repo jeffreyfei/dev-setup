@@ -15,9 +15,13 @@ function vim {
     mkdir -p ~/.vim/colors
     cp -r ./colors/* ~/.vim/colors
 
+    mkdir -p  ~/vim/bundle
     cd ~/.vim/bundle
+    mv vim-colors-solarized ~/.vim/bundle/
     # Get syntastic
     git clone --depth=1 https://github.com/vim-syntastic/syntastic.git
+    # Get solarized
+    git clone git://github.com/altercation/vim-colors-solarized.git
     # Get vim-vue
     git clone https://github.com/posva/vim-vue.git
     # Get vim-vue syntastic
@@ -40,7 +44,7 @@ function profile {
 }
 
 function git {
-   git config --global credential.helper 'cache --timeout=28800' 
+   git config --global credential.helper 'cache --timeout=28800'
 }
 
 

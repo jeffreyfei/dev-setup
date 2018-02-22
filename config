@@ -9,3 +9,12 @@ Host homepage
 Host adsystems
     HostName aerodriftingsystems.com
     User serveradmin
+
+Host ecelinux
+    ProxyJump jzffei@ecelinux4.uwaterloo.ca
+    HostName ecelinux.uwaterloo.ca
+    User jzffei
+
+Host ecetesla
+    HostName ece-tesla1.uwaterloo.ca
+    User jzffei

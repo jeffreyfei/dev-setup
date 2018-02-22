@@ -23,38 +23,44 @@ function vim {
     # Get solarized
     git clone git://github.com/altercation/vim-colors-solarized.git
     # Get vim-vue
-    git clone https://github.com/posva/vim-vue.git
+    # git clone https://github.com/posva/vim-vue.git
     # Get vim-vue syntastic
-    git clone https://github.com/sekel/vim-vue-syntastic.git
+    # git clone https://github.com/sekel/vim-vue-syntastic.git
     # Get ES6 highlighting
-    git clone https://github.com/isRuslan/vim-es6.git
+    # git clone https://github.com/isRuslan/vim-es6.git
     # Get pug highlighting
-    git clone git://github.com/digitaltoad/vim-pug.git
+    # git clone git://github.com/digitaltoad/vim-pug.git
     # Get sass highlighting
-    git clone https://github.com/hail2u/vim-css3-syntax.git
+    # git clone https://github.com/hail2u/vim-css3-syntax.git
 }
 
 function profile {
     echo "Updating bash profile..."
     cp ./.bashrc ~/
     echo "Done"
+    echo "Updating zshrc profile..."
+    cp ./.zshrc ~/
+    echo "Done"
     echo "Updating ssh profile..."
     cp ./config ~/.ssh
     echo "Done"
 }
 
-function git {
-   git config --global credential.helper 'cache --timeout=28800'
+function thinkpad_keymap {
+    echo "Configuring thinkpad keymap"
+    xmodmap -e 'keycode 164 = XF86AudioStop' && \
+        xmodmap -e 'keycode 162 = XF86AudioPlay' && \
+        xmodmap -e 'keycode 164 = XF86AudioStop' && \
+        xmodmap -e 'keycode 153 = XF86AudioNext'
+    echo "Done"
 }
 
-
-while getopts ":avhp" opt; do
+while getopts ":avhpt" opt; do
     case $opt in
         a)
             echo "Full initialization in progress..."
             vim
             profile
-            git
             ;;
         v)
             vim
@@ -62,12 +68,16 @@ while getopts ":avhp" opt; do
         p)
             profile
             ;;
+        t)
+            thinkpad_keymap
+            ;;
         h)
             echo "-------Setup dev enviroment---------"
             echo ""
             echo "-a Apply all setup"
             echo "-v Apply vim only"
             echo "-p Apply profile only"
+            echo "-t Apply thinkpad specific setup"
             echo ""
             echo "By: Jeffrey Fei"
             echo "------------------------------------"

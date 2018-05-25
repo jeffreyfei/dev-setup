@@ -42,7 +42,7 @@ function profile {
     cp ./.zshrc ~/
     echo "Done"
     echo "Updating ssh profile..."
-    cp ./config ~/.ssh
+    cp -r .ssh ~
     echo "Done"
 }
 

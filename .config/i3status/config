@@ -1,0 +1,28 @@
+general {
+  colors = true
+  interval = 1
+}
+
+order += "battery 0"
+order += "cpu_temperature 0"
+order += "volume master"
+order += "tztime local"
+
+battery 0 {
+  format = "BAT: %percentage"
+}
+
+cpu_temperature 0 {
+  format = "CPU: %degrees°C"
+}
+
+volume master {
+  format = "Volume: %volume"
+  format_muted = "Volume: %volume"
+  device = "default"
+  mixer = "Master"
+  mixer_idx = 0
+}
+tztime local {
+  format = "%Y-%m-%d %H:%M:%S"
+}

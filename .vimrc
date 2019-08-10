@@ -1,3 +1,9 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'lervag/vimtex'
+
+call plug#end()
+
 execute pathogen#infect()
 
 "---Syntastic
@@ -30,10 +36,10 @@ let g:syntastic_enable_highlighting = 1
 syntax on
 
 syntax enable
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
 
-" colorscheme jellybeans
+colorscheme jellybeans
 
 set ruler
 set showmatch

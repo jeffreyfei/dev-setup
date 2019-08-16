@@ -14,7 +14,7 @@ set $super Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:dejavu 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -26,6 +26,9 @@ font pango:monospace 8
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
+
+# Launch network manager applet
+exec --no-startup-id nm-applet
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -145,16 +148,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -175,8 +178,8 @@ bar {
 exec --no-startup-id nm-applet
 
 # Volume control
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute # Volume up
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute # Volume down
+bindsym XF86AudioRaiseVolume exec amixer set -M Master 5%+ unmute # Volume up
+bindsym XF86AudioLowerVolume exec amixer set -M Master 5%- unmute # Volume down
 bindsym XF86AudioMute exec amixer -q set Master toggle # Mute/Umute
 bindsym XF86AudioMicMute exec amixer -q set Capture toggle # Mute/Umute mic
 
@@ -184,13 +187,32 @@ bindsym XF86AudioMicMute exec amixer -q set Capture toggle # Mute/Umute mic
 bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 
-# Numpad function keys T540p
-bindsym 0x1008ff18 exec google-chrome-stable # open chrome
-bindsym $mod+0x1008ff18 exec google-chrome-stable --incognito # open chrome in incognito
-bindsym 0x1008ff1D exec gnome-calculator # open calculator
-bindsym $super+l exec --no-startup-id i3lock-fancy # lock
-bindsym $mod+$super+l exec --no-startup-id i3lock-fancy && systemctl suspend # lock and suspend
-bindsym $super+e exec --no-startup-id terminator -e ranger # open file explorer
+# Media buttons
+bindsym XF86AudioPlay exec cmus-remote --pause
+bindsym XF86AudioPrev exec cmus-remote --prev
+bindsym XF86AudioNext exec cmus-remote --next
+bindsym XF86AudioStop exec cmus-remote --stop
+
+# Lock button
+bindsym XF86ScreenSaver exec i3lock-fancy
 
 # Applications
-bindsym $super+m exec --no-startup-id terminator -e cmus
+bindsym $super+c exec --no-startup-id google-chrome-stable
+bindsym $super+i exec --no-startup-id google-chrome-stable --incognito
+bindsym $super+e exec terminator -e 'ranger'
+bindsym $super+m exec terminator -e 'cmus'
+bindsym $super+l exec i3lock-fancy
+
+# Wallpaper
+exec --no-startup-id feh --bg-fill /home/j/Photos/wallpapers/amongtrees.jpg
+
+# Thin border
+for_window [class="^.*"] border pixel 1
+# class                 border  backgr. text    indicator child_border
+client.focused          #566573 #A5A5A5 #FFFFFF #2E9EF4   #566573
+client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
+client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000
+
+client.background       #ffffffA

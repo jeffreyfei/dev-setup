@@ -27,6 +27,9 @@ font pango:dejavu 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# Launch fcitx
+exec --no-startup-id fcitx -d
+
 # Launch network manager applet
 exec --no-startup-id nm-applet
 
@@ -216,3 +219,11 @@ client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000
 
 client.background       #ffffffA
+
+# Float window
+for_window [title="Calculator"] floating enable move right 1500px,move down 500px
+
+# Print screen settings
+
+bindsym Print exec escrotum -C
+bindsym $super+Print exec escrotum -Cs

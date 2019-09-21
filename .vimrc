@@ -1,8 +1,8 @@
-call plug#begin('~/.vim/plugged')
+"call plug#begin('~/.vim/plugged')
 
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 
-call plug#end()
+"call plug#end()
 
 execute pathogen#infect()
 
@@ -12,24 +12,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_echo_current_error = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_enable_highlighting = 1
-
-" JavaScript
-"let g:syntastic_javascript_checkers = ["eslint"]
-
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_vue_checkers = ['eslint']
-"let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
-"if matchstr(local_eslint, "^\/\\w") == ''
-"    let local_eslint = getcwd() . "/" . local_eslint
-"endif
-"if executable(local_eslint)
-"    let g:syntastic_javascript_eslint_exec = local_eslint
-"    let g:syntastic_vue_eslint_exec = local_eslint
-
-" Ruby
-"let g:syntastic_ruby_checkers = ['rubocop']
-"let g:vimrubocop_config = '~/rubocop.yml'
-
 
 "----------------------------
 "endif
@@ -41,10 +23,16 @@ syntax enable
 
 colorscheme jellybeans
 
+" Indentation rules
+set tabstop=4
+set shiftwidth=2
+set autoindent
+filetype indent on
+set expandtab
+
 set ruler
 set showmatch
 set showmode
-set autoindent
 set ignorecase
 set smartcase
 set relativenumber
@@ -72,9 +60,13 @@ map k gk
 
 " redefine tabs
 " filetype plugin indent on
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+" set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 " remove trailing spaces
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" nerd tree config
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 map ;p "+p
 map ;y "+y

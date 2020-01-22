@@ -32,7 +32,16 @@ exec --no-startup-id nm-applet
 
 # Set background
 
-exec --no-startup-id feh --bg-fill /home/j/Pictures/Wallpapers/50109402_p0.png
+exec --no-startup-id feh --bg-fill -s /home/j/Pictures/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
+
+# Setup dual monitor
+exec --no-startup-id xrandr --output DP2-2 --auto --right-of eDP1
+
+# Start compton
+exec --no-startup-id compton --config ~/.config/compton.conf -b
+
+# Set ibus daemon
+exec --no-startup-id ibus-daemon --xim -d -r
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -152,10 +161,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-	bindsym h resize shrink width 5 px or 5 ppt
-	bindsym j resize grow height 5 px or 5 ppt
-	bindsym k resize shrink height 5 px or 5 ppt
-	bindsym l resize grow width 5 px or 5 ppt
+	bindsym h resize shrink width 3 px or 3 ppt
+	bindsym j resize grow height 3 px or 3 ppt
+	bindsym k resize shrink height 3 px or 3 ppt
+	bindsym l resize grow width 3 px or 3 ppt
 
 	# same bindings, but for the arrow keys
 	bindsym Left resize shrink width 5 px or 5 ppt
@@ -189,7 +198,7 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle # mute Mic
 
 # Thin border
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 1
 # class                 border  backgr. text    indicator child_border
 client.focused          #566573 #A5A5A5 #FFFFFF #2E9EF4   #566573
 client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
@@ -197,24 +206,18 @@ client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000
 
-client.background       #ffffff
+client.background       #ffffffA
 
 # Programs
-bindsym $sup+c exec google-chrome
-bindsym $sup+i exec google-chrome --incognito
+bindsym $sup+b exec brave-browser
 
 # Bind special keys
 
-bindsym XF86HomePage exec google-chrome
+bindsym XF86HomePage exec brave-browser
 bindsym $sup+l exec i3lock-fancy
+bindsym $sup+s exec i3lock-fancy && systemctl suspend
 bindsym XF86Calculator exec gnome-calculator
 bindsym $sup+e exec nautilus
 
 for_window [title="Calculator"] floating enable
 for_window [class="Nautilus"] floating enable
-
-# Dual monitor settings
-
-set $mon1 eDP1
-set $mon2 DP2-1
-exec –no-startup-id xrandr –output $mon1 –right-of $mon2 –auto

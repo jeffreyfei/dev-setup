@@ -33,6 +33,9 @@ exec --no-startup-id fcitx -d
 # Launch network manager applet
 exec --no-startup-id nm-applet
 
+# Start compton
+exec --no-startup-id compton --config ~/.config/compton.conf -b
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -187,8 +190,8 @@ bindsym XF86AudioMute exec amixer -q set Master toggle # Mute/Umute
 bindsym XF86AudioMicMute exec amixer -q set Capture toggle # Mute/Umute mic
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 # decrease screen brightness
 
 # Media buttons
 bindsym XF86AudioPlay exec cmus-remote --pause
@@ -200,8 +203,9 @@ bindsym XF86AudioStop exec cmus-remote --stop
 bindsym XF86ScreenSaver exec i3lock-fancy
 
 # Applications
-bindsym $super+c exec --no-startup-id google-chrome-stable
-bindsym $super+i exec --no-startup-id google-chrome-stable --incognito
+#bindsym $super+c exec --no-startup-id google-chrome-stable
+#bindsym $super+i exec --no-startup-id google-chrome-stable --incognito
+bindsym $super+b exec --no-startup-id brave
 bindsym $super+e exec terminator -e 'ranger'
 bindsym $super+m exec terminator -e 'cmus'
 bindsym $super+l exec i3lock-fancy
@@ -221,7 +225,7 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000
 client.background       #ffffffA
 
 # Float window
-for_window [title="Calculator"] floating enable move right 1500px,move down 500px
+#for_window [title="Calculator"] floating enable move right 1500px,move down 500px
 
 # Print screen settings
 

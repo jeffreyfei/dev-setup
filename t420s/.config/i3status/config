@@ -1,28 +1,58 @@
 general {
-  colors = true
-  interval = 1
+	colors = true
+	color_good = "#BBBBBB"
+	color_bad = "#CC1616"
+	color_degraded = "#55858E"
+	interval = 1
 }
 
-order += "battery 0"
-order += "cpu_temperature 0"
 order += "volume master"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "battery 0"
+order += "battery 1"
 order += "tztime local"
 
-battery 0 {
-  format = "BAT: %percentage"
+volume master {
+	format = "VOL: %volume " 
+        format_muted = "Vol: (muted) %volume "
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+cpu_usage {
+	format = " CPU: %usage "
 }
 
 cpu_temperature 0 {
-  format = "CPU: %degrees°C"
+  format = " TEMP: %degrees°C "
 }
 
-volume master {
-  format = "Volume: %volume"
-  format_muted = "Volume: %volume"
-  device = "default"
-  mixer = "Master"
-  mixer_idx = 0
+battery 0 {
+        format = "%status %percentage %emptytime "
+        format_down = " No battery "
+        status_chr = " CHR"
+        status_bat = " BAT"
+        status_unk = " UNK"
+        status_full = " FULL"
+#        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+        last_full_capacity = true
 }
+
+battery 1 {
+        format = "%status %percentage %emptytime "
+        format_down = " No battery "
+        status_chr = " CHR"
+        status_bat = " BAT"
+        status_unk = " UNK"
+        status_full = " FULL"
+#        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+        last_full_capacity = true
+}
+
 tztime local {
-  format = "%Y-%m-%d %H:%M:%S"
+	format = " %h-%d / %H:%M:%S "
 }

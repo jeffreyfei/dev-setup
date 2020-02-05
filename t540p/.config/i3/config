@@ -30,6 +30,9 @@ font pango:monospace 8
 # Launch network manager applet
 exec --no-startup-id nm-applet
 
+# Clipboard manager
+exec --no-startup-id clipit
+
 # Set background
 
 exec --no-startup-id feh --bg-fill -s /home/j/Pictures/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
@@ -212,12 +215,22 @@ client.background       #ffffffA
 bindsym $sup+b exec brave-browser
 bindsym $sup+m exec terminator -e 'cmus'
 bindsym $sup+e exec terminator -e 'ranger'
+bindsym $sup+c exec xcalc
 
 # Bind special keys
 
 bindsym XF86HomePage exec brave-browser
 bindsym $sup+l exec i3lock-fancy
 bindsym $sup+s exec i3lock-fancy && systemctl suspend
-bindsym XF86Calculator exec gnome-calculator
+bindsym XF86Calculator exec xcalc
 
 for_window [class="Nautilus"] floating enable
+for_window [instance="xcalc"] floating enable
+for_window [instance="xcalc"] resize set 400 400
+for_window [instance="xcalc"] move right 600px
+for_window [instance="xcalc"] move down 500px
+
+# Print screen settings
+
+bindsym Print exec escrotum -C
+bindsym $sup+Print exec escrotum -Cs

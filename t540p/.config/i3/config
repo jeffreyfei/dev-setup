@@ -234,3 +234,10 @@ for_window [instance="xcalc"] move down 500px
 
 bindsym Print exec escrotum -C
 bindsym $sup+Print exec escrotum -Cs
+
+# Media buttons
+bindsym XF86AudioPlay exec cmus-remote --pause
+bindsym XF86AudioPrev exec cmus-remote --prev
+bindsym XF86AudioNext exec cmus-remote --next
+bindsym XF86AudioStop exec cmus-remote --stop
+

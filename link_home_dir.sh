@@ -19,7 +19,7 @@ checkAndRemove() {
 
 mountDir=$1
 
-"/dev/sdb1 ${mountDir} ntfs-3g defaults 0 0" >>> /etc/fstab
+echo "/dev/sdb1 ${mountDir} ntfs-3g defaults 0 0" >> /etc/fstab
 
 checkAndRemove Documents
 checkAndRemove Music

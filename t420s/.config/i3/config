@@ -224,8 +224,12 @@ client.placeholder      #000000 #0C0C0C #FFFFFF #000000
 
 client.background       #ffffffA
 
-# Float window
-#for_window [title="Calculator"] floating enable move right 1500px,move down 500px
+# Calculator
+bindsym $super+c exec gnome-calculator
+for_window [instance="gnome-calculator"] floating enable
+for_window [instance="gnome-calculator"] resize set 400 400
+#for_window [instance="gnome-calculator"] move right 600px
+#for_window [instance="gnome-calculator"] move down 500px
 
 # Print screen settings
 

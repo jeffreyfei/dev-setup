@@ -1,5 +1,29 @@
 #!/bin/bash
 
+set -e
+
+gitconfig_path=$HOME/.gitconfig
+bashrc_path=$HOME/.bashrc
+zshrc_path=$HOME/.zshrc
+mybashrc_path=$HOME/.mybashrc
+
+# Check the existence of the file and prompt the user
+# $1 = target file path
+# $2 = source file path
+check_and_replace_file() {
+    if [[ -f $1 ]]; then
+        echo "Warning: $1 already exists. Replace and continue? (y/n)"
+        read res
+        if [[ $res = "y" ]]; then
+            rm $1
+            echo "$1 removed"
+            # Create symlink for the config file
+            ln -s $2 $1
+            echo "Symlink: $1 created"
+        fi
+    fi
+}
+
 function vim {
     echo "Initializing vim..."
     echo "Setting up pathogen..."
@@ -29,35 +53,28 @@ function thinkpad_keymap {
     echo "Done"
 }
 
-while getopts ":avhpt" opt; do
-    case $opt in
-        a)
-            echo "Full initialization in progress..."
-            vim
-            profile
-            ;;
-        v)
-            vim
-            ;;
-        p)
-            profile
-            ;;
-        t)
-            thinkpad_keymap
-            ;;
-        h)
-            echo "-------Setup dev enviroment---------"
-            echo ""
-            echo "-a Apply all setup"
-            echo "-v Apply vim only"
-            echo "-p Apply profile only"
-            echo "-t Apply thinkpad specific setup"
-            echo ""
-            echo "By: Jeffrey Fei"
-            echo "------------------------------------"
-            ;;
-        \?)
-            echo "Invalid option: -$OPTARG"
-            ;;
-    esac
-done
+# Update .gitconfig
+echo "Update .gitconfig? (y/n)"
+read res
+if [[ $res = "y" ]]; then
+    check_and_replace_file $gitconfig_path $(pwd)/.gitconfig
+fi
+
+echo "Update .bashrc/.zshrc? (y/n)"
+
+read res
+if [[ $res = "y" ]]; then
+    mybashrc_ref="source ~/.mybashrc"
+    check_and_replace_file $mybashrc_path $(pwd)/.mybashrc
+    if [[ -f $bashrc_path ]]; then
+        if ! (cat $bashrc_path | grep -Fxq "$mybashrc_ref"); then
+            echo $mybashrc_ref >> $bashrc_path
+        fi
+    fi
+
+    if [[ -f $zshrc_path ]]; then
+        if ! (cat $zshrc_path | grep -Fxq "$mybashrc_ref"); then
+            echo $mybashrc_ref >> $zshrc_path
+        fi
+    fi
+fi

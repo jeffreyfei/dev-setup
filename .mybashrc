@@ -1,0 +1,3 @@
+# User specific aliases and functions
+alias clearall='tput reset'
+alias vim='vimx'

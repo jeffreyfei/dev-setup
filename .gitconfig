@@ -9,5 +9,6 @@
         stashall = stash save --keep-index --include-untracked
 	amendhead = commit --amend -C HEAD
 	undo = "!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f"
+	nuke = "!f() { git fetch origin ${1-master} && git reset --hard origin/${1-master}; }; f"
 [diff]
 	algorithm = histogram

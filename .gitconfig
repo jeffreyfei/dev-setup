@@ -7,5 +7,6 @@
         cma = commit --all -m
         worddiff = diff --word-diff --unified=10
         stashall = stash save --keep-index --include-untracked
+	amendhead = commit --amend -C HEAD
 [diff]
 	algorithm = histogram

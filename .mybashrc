@@ -1,3 +1,6 @@
 # User specific aliases and functions
 alias clearall='tput reset'
 alias vim='vimx'
+
+# i3 Specific
+alias resetwifi='killall nm-applet; nohup nm-applet &'

@@ -8,5 +8,6 @@
         worddiff = diff --word-diff --unified=10
         stashall = stash save --keep-index --include-untracked
 	amendhead = commit --amend -C HEAD
+	undo = "!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f"
 [diff]
 	algorithm = histogram

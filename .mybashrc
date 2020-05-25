@@ -4,3 +4,4 @@ alias vim='vimx'
 
 # i3 Specific
 alias resetwifi='killall nm-applet; nohup nm-applet &'
+export PATH="$HOME/bin:$PATH"

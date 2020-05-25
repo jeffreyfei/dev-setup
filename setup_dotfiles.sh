@@ -19,6 +19,7 @@ fi
 echo "Update .bashrc/.zshrc? (y/n)"
 read res
 if [[ $res = "y" ]]; then
+    mkdir -p ~/bin
     mybashrc_ref="source ~/.mybashrc"
     check_and_link_file $mybashrc_path $(pwd)/.mybashrc
     check_and_link_file $bashrc_path $(pwd)/.bashrc

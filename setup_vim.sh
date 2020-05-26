@@ -10,12 +10,13 @@ jellybean_theme_url=https://raw.githubusercontent.com/nanotech/jellybeans.vim/ma
 vimcompletesme_url=git://github.com/ajh17/VimCompletesMe.git
 mdr_url=https://github.com/MichaelMure/mdr/releases/download/v0.2.5/mdr_linux_386
 
+repo_home=$(pwd)
 
 echo "Update .vimrc? (y/n)"
 read res
 if [[ $res = "y" ]]; then
     if type vim > /dev/null || type vimx > /dev/null; then
-        check_and_replace_file $vimrc_path $(pwd)/.vimrcbase
+        check_and_replace_file $vimrc_path $repo_home/.vimrcbase
     else
         echo "Vim not found, please install vim first"
         exit 1
@@ -55,7 +56,7 @@ if [[ $res = "y" ]]; then
     vim +PlugInstall +qall
 
     # Insert NerdTree config
-    cat $(pwd)/nerdtree_conf >> $vimrc_path
+    cat $repo_home/nerdtree_conf >> $vimrc_path
 
     # Install VimCompletesMe
     echo "Install VimCompletesMe?"
@@ -73,7 +74,7 @@ if [[ $res = "y" ]]; then
         mkdir -p ~/.vim/plugin
         cp -r /tmp/mdplug/plugin/* ~/.vim/plugin
 
-        cat $(pwd)/mdpreview_conf >> $vimrc_path
+        cat $repo_home/mdpreview_conf >> $vimrc_path
 
         # Install mdr
         mkdir -p ~/bin

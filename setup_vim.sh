@@ -39,13 +39,13 @@ if [[ $res = "y" ]]; then
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     # Install VimPlug plugins
     echo "call plug#begin('~/.vim/plugged')"  >> $vimrc_path
-    echo "Install vimtex?"
+    echo "Install vimtex? (y/n)"
     read res
     if [[ $res = "y" ]]; then
         echo "Plug 'lervag/vimtex'" >> $vimrc_path
     fi
 
-    echo "Install nerdtree?"
+    echo "Install nerdtree? (y/n)"
     read res
     if [[ $res = "y" ]]; then
         echo "Plug 'preservim/nerdtree'" >> $vimrc_path
@@ -59,20 +59,24 @@ if [[ $res = "y" ]]; then
     cat $repo_home/nerdtree_conf >> $vimrc_path
 
     # Install VimCompletesMe
-    echo "Install VimCompletesMe?"
+    echo "Install VimCompletesMe? (y/n)"
     read res
     if [[ $res = "y" ]]; then
         git clone $vimcompletesme_url ~/.vim/pack/vendor/start/VimCompletesMe
     fi
 
-    echo "Install MD Preview?"
+    echo "Install MD Preview? (y/n)"
     read res
     if [[ $res = "y" ]]; then
-        git clone git@github.com:skanehira/preview-markdown.vim.git /tmp/mdplug
+        wget https://github.com/skanehira/preview-markdown.vim/archive/master.zip -O mdplug.zip
+        unzip mdplug.zip -d mdplug
         mkdir -p ~/.vim/autoload
         cp -r /tmp/mdplug/autoload/* ~/.vim/autoload
         mkdir -p ~/.vim/plugin
         cp -r /tmp/mdplug/plugin/* ~/.vim/plugin
+
+        rm -rf /tmp/mdplug.zip
+        rm -rf /tmp/mdplug
 
         cat $repo_home/mdpreview_conf >> $vimrc_path
 

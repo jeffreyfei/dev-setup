@@ -83,5 +83,6 @@ if [[ $res = "y" ]]; then
         # Install mdr
         mkdir -p ~/bin
         wget $mdr_url -O ~/bin/mdr
+        chmod +x ~/bin/mdr
     fi
 fi

@@ -33,8 +33,11 @@ fi
 echo "Install plugins? (y/n)"
 read res
 if [[ $res = "y" ]]; then
+    # Install vimplug
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     # Install VimPlug plugins
-    echo "plug#begin('~/.vim/plugged')"  >> $vimrc_path
+    echo "call plug#begin('~/.vim/plugged')"  >> $vimrc_path
     echo "Install vimtex?"
     read res
     if [[ $res = "y" ]]; then

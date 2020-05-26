@@ -7,8 +7,9 @@ source constants.sh
 
 colorscheme="colorscheme jellybeans"
 jellybean_theme_url=https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
-vimcompletesme_url=git://github.com/ajh17/VimCompletesMe.git
+vimcompletesme_url=https://github.com/ajh17/VimCompletesMe.git
 mdr_url=https://github.com/MichaelMure/mdr/releases/download/v0.2.5/mdr_linux_386
+mdplug_url=https://github.com/skanehira/preview-markdown.vim.git
 
 repo_home=$(pwd)
 
@@ -62,14 +63,13 @@ if [[ $res = "y" ]]; then
     echo "Install VimCompletesMe? (y/n)"
     read res
     if [[ $res = "y" ]]; then
-        git clone $vimcompletesme_url ~/.vim/pack/vendor/start/VimCompletesMe
+        git clone $vimcompletesme_url ~/.vim/pack/vendor/start/VimCompletesMe    
     fi
 
     echo "Install MD Preview? (y/n)"
     read res
     if [[ $res = "y" ]]; then
-        wget https://github.com/skanehira/preview-markdown.vim/archive/master.zip -O mdplug.zip
-        unzip mdplug.zip -d mdplug
+        git clone $mdplug_url /tmp/mdplug
         mkdir -p ~/.vim/autoload
         cp -r /tmp/mdplug/autoload/* ~/.vim/autoload
         mkdir -p ~/.vim/plugin

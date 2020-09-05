@@ -38,8 +38,8 @@ exec --no-startup-id clipit
 exec --no-startup-id feh --bg-fill -s /home/j/Pictures/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
 
 # Setup dual monitor
-#exec --no-startup-id xrandr --output DP2-2 --auto --right-of eDP1
-exec --no-startup-id xrandr --output DP2-2 --auto --left-of eDP1
+exec --no-startup-id xrandr --output DP2-1 --auto --right-of eDP1
+#exec --no-startup-id xrandr --output DP2-2 --auto --left-of eDP1
 
 
 # Start compton
@@ -191,6 +191,8 @@ bar {
         position top
         status_command i3status
 }
+
+bindsym $mod+m exec --no-startup-id xrandr --output DP2-1 --auto --right-of eDP1
 
 # Brightness keybindings
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5

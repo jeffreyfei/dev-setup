@@ -13,6 +13,8 @@ mdplug_url=https://github.com/skanehira/preview-markdown.vim.git
 
 repo_home=$(pwd)
 
+mkdir -p ~/.vimbackup
+
 echo "Update .vimrc? (y/n)"
 read res
 if [[ $res = "y" ]]; then

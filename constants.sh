@@ -19,11 +19,13 @@ check_and_link_file() {
         if [[ $res = "y" ]]; then
             rm $1
             echo "$1 removed"
-            # Create symlink for the config file
-            ln -s $2 $1
-            echo "Symlink: $1 created"
+        else
+            return
         fi
     fi
+    # Create symlink for the config file
+    ln -s $2 $1
+    echo "Symlink: $1 created"
 }
 
 # Check the existence of the file and prompt the user
@@ -37,11 +39,13 @@ check_and_link_dir() {
         if [[ $res = "y" ]]; then
             rm -rf $1
             echo "$1 removed"
-            # Create symlink for the config file
-            ln -s $2 $1
-            echo "Symlink: $1 created"
+        else
+            return
         fi
     fi
+    # Create symlink for the config file
+    ln -s $2 $1
+    echo "Symlink: $1 created"
 }
 
 # Check the existence of the file and prompt the user

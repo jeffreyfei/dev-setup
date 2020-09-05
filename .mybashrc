@@ -1,6 +1,10 @@
 # User specific aliases and functions
 alias clearall='tput reset'
-alias vim='vimx'
+
+
+if type vimx >> /dev/null; then
+    alias vim='vimx'
+fi
 
 # i3 Specific
 alias resetwifi='killall nm-applet; nohup nm-applet &'
